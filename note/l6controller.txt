@@ -1,0 +1,41 @@
+=>Controller
+
+php artisan make:controller StudentsController
+
+----------------------------------------------
+
+=>Resource Controller
+
+php artisan make:controller CountriesController --resource
+
+php artisan make:controller CountriesController -r
+
+
+----------------------------------------------
+
+
+=> Route with controller
+
+ Route::get('/students',[\App\Http\Controllers\StudentsController::class,'index'])->name("students.index");
+
+
+(or)
+
+
+use \App\Http\Controllers\StudentsController;
+
+Route::get('/students',[StudentsController::class,'index'])->name("students.index");
+
+
+
+
+=>Grouping route with controller
+
+Route::group(['prefix'=>'students'],function(){
+    Route::get('/',[StudentsController::class,'index'])->name("students.index");
+    Route::get('/show',[StudentsController::class,'show'])->name("students.show");
+    Route::get('/edit',[StudentsController::class,'edit'])->name("students.edit");
+});
+
+
+

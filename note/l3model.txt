@@ -1,0 +1,106 @@
+Create Table( app > Models )
+
+=>Create Model
+php artisan make:model Student
+
+
+
+----------------------------------------------------------------------
+Database connect > created model > create migration > Mess Assignments > migrate
+------------------------------------------------------------------------
+
+=> Inspecting Models to Database Table
+php artisan model:show Student
+
+-------------------------------------------------------------
+
+
+Mess Assignments ( Model > Book )
+
+php artisan make:model Book
+
+protected $table = "books";
+protected $primaryKey = "id";
+
+=> Customize Timestamps
+const CREATED_AT = "created_date";
+const UPDATED_AT = "updated_date";
+
+=> Method 1
+protected $fillable = [
+    'title',
+    'status',
+    'copyright',
+    'solidfile',
+    'created_time',
+    'updated_time'
+];
+
+=> Method 2
+protected $guarded = [];
+
+---------------------------------------------------------------------------------
+
+=> Retrieving Data from  model (Single / Multi)
+
+=> Multi
+
+
+(Method 1)
+
+$book = Book::all();
+return $book;
+
+
+foreach($books as $book){
+    echo "$book->title <br/> $book->copyright <hr/>";
+}
+
+
+-------
+
+(Method 2) // Retrieving data matching by where method
+
+$book = Book::where('invoiceid',5)->get();
+return $book;
+
+foreach($books as $book){
+    echo "$book->title <br/> $book->copyright <hr/>";
+}
+
+
+
+
+=asc/desc
+
+$book = Book::where('city',"yangon")->orderBy('id','asc')->get();
+return $book;
+
+
+$book = Book::where('city',"yangon")->orderBy('id','desc')->get();
+return $book;
+
+
+$book = Book::where('city',"yangon")->orderBy('id','asc')->get();
+return $book;
+
+----------
+
+
+Single
+
+(Method 1) // Retrieving a data by primary key
+
+$book = Book::find(5);
+return $book;
+
+ echo "$book->title <br/> $book->copyright <hr/>";
+
+ -------
+
+(Method 2) // Retrieving a data by primary key with Error Mode Exception
+
+$book = Book::findOrFail(5);
+return $book;
+
+ echo "$book->title <br/> $book->copyright <hr/>";

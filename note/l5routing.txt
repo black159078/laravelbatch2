@@ -1,0 +1,99 @@
+=> Route
+
+routes > web.php (or) routes > api.php
+
+
+=>Available Router Method
+
+// Read
+Route::get(uri,callback);
+
+// Create
+Route::post(uri,callback);
+
+
+// Update
+Route::put(uri,callback);
+Route::patch(uri,callback);
+
+
+// Delete
+Route::delete(uri,callback);
+
+
+Route::options(uri,callback);
+
+-----------------------------------------------------------------
+
+
+=> Basic Routing
+
+Route::get('/sayhi',function(){
+    return "Hi Min Ga Lar Par";
+});
+
+-------------------------------------------------------------------
+
+=> Redirect Routing
+
+Route::get('/contact',function(){
+    return redirect("about");
+});
+
+
+-------------------------------------------------------------------
+
+=> Routing with Parameter
+
+
+
+
+-------------------------------------------------------------------
+=> Routing with Single Parameter
+
+
+
+
+
+
+
+-------------------------------------------------------------------
+
+=> Routing with Multi Parameter
+
+
+
+
+
+
+-------------------------------------------------------------------
+
+=> Naming Route
+
+
+Route::get('/profile',function(){
+    return view("myprofile");
+})->name("prof");
+
+
+---------------------------------------------------------------------
+
+
+=>Check route list
+
+php artisan route:list         // a to z ASC
+php artisan route:list -r      // z to a DESC
+
+
+
+=>Check route list by path
+
+php artisan route:list --path=contact
+php artisan route:list --path=about
+
+
+=>Check route list by method
+
+php artisan route:list --method=get
+php artisan route:list --method=get -r
+php artisan route:list --method=post
