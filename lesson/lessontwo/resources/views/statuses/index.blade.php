@@ -1,926 +1,100 @@
 @extends('layouts.adminindex')
 
 @section('content')
-<!-- Start Content Area -->
-<section>
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-10 col-md-9 ms-auto">
+    <!-- Start Content Area -->
+        <div class="container-fluid">
+            <div class="col-md-12">
+                <form action="{{route('statuses.store')}}" method="POST">
 
-                        <!-- Start Shortcut Area -->
+                    {{ csrf_field() }}
+                    <!-- @csrf -->
 
-                        <div class="row pt-md-5 mt-md-3">
 
-                            <div class="col-lg-3 col-md-6 mb-2">
-                                <div class="card shadow py-2 border-left-primarys">
-                                    <div class="card-body">
-                                        <div class="row align-items-center">
-                                            <div class="col">
-                                                <h6 class="text-uppercase text-primary text-xs fw-bold mb-1">sales (Montly)</h6>
-                                                <p class="h5 text-muted">$ 50,000</p>
-                                            </div>
-                                            <div class="col-auto">
-                                                <i class="fas fa-calendar fa-2x text-secondary"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="row align-items-end">
 
-                            <div class="col-lg-3 col-md-6 mb-2">
-                                <div class="card shadow py-2 border-left-successes">
-                                    <div class="card-body">
-                                        <div class="row align-items-center">
-                                            <div class="col">
-                                                <h6 class="text-uppercase text-primary text-xs fw-bold mb-1">Rental Fee (Annual)</h6>
-                                                <p class="h5 text-muted">$ 400,000</p>
-                                            </div>
-                                            <div class="col-auto">
-                                                <i class="fas fa-dollar-sign fa-2x text-secondary"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-3 col-md-6 mb-2">
-                                <div class="card shadow py-2 border-left-infos">
-                                    <div class="card-body">
-                                        <div class="row align-items-center">
-                                            <div class="col">
-                                                <h6 class="text-uppercase text-primary text-xs fw-bold mb-1">debit collect</h6>
-                                                <div class="row">
-                                                    <div class="col-auto">
-                                                        <p class="h5 text-muted">60%</p>
-                                                    </div>
-                                                    <div class="col">
-                                                        <div class="progress" style="height: 13px;">
-                                                            <div class="progress-bar bg-info" style="width: 60%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-auto">
-                                                <i class="fas fa-clipboard-list fa-2x text-secondary"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-3 col-md-6 mb-2">
-                                <div class="card shadow py-2 border-left-warnings">
-                                    <div class="card-body">
-                                        <div class="row align-items-center">
-                                            <div class="col">
-                                                <h6 class="text-uppercase text-primary text-xs fw-bold mb-1">Request Message</h6>
-                                                <p class="h5 text-muted">25</p>
-                                            </div>
-                                            <div class="col-auto">
-                                                <i class="fas fa-comments fa-2x text-secondary"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
+                        <div class="col-md-6 form-group">
+                            <label for="name">Name <span class="text-danger">*</span></label>
+                            <input type="text" name="name" class="form-control form-control-sm rounded-0" placeholder="Enter Status Name" />
                         </div>
 
-                        <!-- End Shortcut Area -->
-
-
-                        <!-- Start Carousel Area -->
-                        <div class="row">
-
-                            <div class="col-md-3 col-sm-6 mb-2">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h6 class="card-title">Sales</h6>
-
-                                        <div id="sales" class="carousel slide" data-bs-ride="carousel">
-                                            <div class="carousel-inner p-3">
-
-                                                <div class="carousel-item active">
-                                                    <div class="d-flex">
-                                                        <h3 class="me-3">$ 58,664</h3>
-                                                        <h3 class="text-danger">+3.2%</h3>
-                                                    </div>
-
-                                                    <div>
-                                                        <p class="fw-bold small">Revenue<span class="text-muted">($1572M last month)</span></p>
-                                                    </div>
-    
-                                                    <button type="button" class="btn btn-outline-secondary btn-sm">
-                                                        <i class="fas fa-calendar-alt me-1"></i> Jan
-                                                    </button>
-                                                </div>
-
-                                                <div class="carousel-item">
-                                                    <div class="d-flex">
-                                                        <h3 class="me-3">$ 58,664</h3>
-                                                        <h3 class="text-danger">+2.2%</h3>
-                                                    </div>
-
-                                                    <div>
-                                                        <p class="fw-bold small">Revenue<span class="text-muted">($1572M last month)</span></p>
-                                                    </div>
-    
-                                                    <button type="button" class="btn btn-outline-secondary btn-sm">
-                                                        <i class="fas fa-calendar-alt me-1"></i> Jan
-                                                    </button>
-                                                </div>
-
-                                                <div class="carousel-item">
-                                                    <div class="d-flex">
-                                                        <h3 class="me-3">$ 58,664</h3>
-                                                        <h3 class="text-danger">+1.2%</h3>
-                                                    </div>
-
-                                                    <div>
-                                                        <p class="fw-bold small">Revenue<span class="text-muted">($1572M last month)</span></p>
-                                                    </div>
-    
-                                                    <button type="button" class="btn btn-outline-secondary btn-sm">
-                                                        <i class="fas fa-calendar-alt me-1"></i> Jan
-                                                    </button>
-                                                </div>
-
-                                                <button type="button" class="carousel-control-prev" data-bs-target="#sales" data-bs-slide="prev">
-                                                    <span class="carousel-control-prev-icon"></span>
-                                                </button> 
-                                                
-                                                <button type="button" class="carousel-control-next" data-bs-target="#sales" data-bs-slide="next">
-                                                    <span class="carousel-control-next-icon"></span>
-                                                </button>  
-
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-3 col-sm-6 mb-2">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h6 class="card-title">Purchases</h6>
-
-                                        <div id="purchases" class="carousel slide" data-bs-ride="carousel">
-                                            <div class="carousel-inner p-3">
-
-                                                <div class="carousel-item active">
-                                                    <div class="d-flex">
-                                                        <h3 class="me-3">$ 78,664</h3>
-                                                        <h3 class="text-danger">+3.2%</h3>
-                                                    </div>
-
-                                                    <div>
-                                                        <p class="fw-bold small">Revenue<span class="text-muted">($1572M last month)</span></p>
-                                                    </div>
-    
-                                                    <button type="button" class="btn btn-outline-secondary btn-sm">
-                                                        <i class="fas fa-calendar-alt me-1"></i> Jan
-                                                    </button>
-                                                </div>
-
-                                                <div class="carousel-item">
-                                                    <div class="d-flex">
-                                                        <h3 class="me-3">$ 58,664</h3>
-                                                        <h3 class="text-danger">+2.2%</h3>
-                                                    </div>
-
-                                                    <div>
-                                                        <p class="fw-bold small">Revenue<span class="text-muted">($1572M last month)</span></p>
-                                                    </div>
-    
-                                                    <button type="button" class="btn btn-outline-secondary btn-sm">
-                                                        <i class="fas fa-calendar-alt me-1"></i> Jan
-                                                    </button>
-                                                </div>
-
-                                                <div class="carousel-item">
-                                                    <div class="d-flex">
-                                                        <h3 class="me-3">$ 58,664</h3>
-                                                        <h3 class="text-danger">+1.2%</h3>
-                                                    </div>
-
-                                                    <div>
-                                                        <p class="fw-bold small">Revenue<span class="text-muted">($1572M last month)</span></p>
-                                                    </div>
-    
-                                                    <button type="button" class="btn btn-outline-secondary btn-sm">
-                                                        <i class="fas fa-calendar-alt me-1"></i> Jan
-                                                    </button>
-                                                </div>
-
-                                                <button type="button" class="carousel-control-prev" data-bs-target="#purchases" data-bs-slide="prev">
-                                                    <span class="carousel-control-prev-icon"></span>
-                                                </button> 
-                                                
-                                                <button type="button" class="carousel-control-next" data-bs-target="#purchases" data-bs-slide="next">
-                                                    <span class="carousel-control-next-icon"></span>
-                                                </button>  
-
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-3 col-sm-6 mb-2">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h6 class="card-title">Returns</h6>
-
-                                        <div id="returns" class="carousel slide" data-bs-ride="carousel">
-                                            <div class="carousel-inner p-3">
-
-                                                <div class="carousel-item active">
-                                                    <div class="d-flex">
-                                                        <h3 class="me-3">$ 78,664</h3>
-                                                        <h3 class="text-danger">+3.2%</h3>
-                                                    </div>
-
-                                                    <div>
-                                                        <p class="fw-bold small">Revenue<span class="text-muted">($1572M last month)</span></p>
-                                                    </div>
-    
-                                                    <button type="button" class="btn btn-outline-secondary btn-sm">
-                                                        <i class="fas fa-calendar-alt me-1"></i> Jan
-                                                    </button>
-                                                </div>
-
-                                                <div class="carousel-item">
-                                                    <div class="d-flex">
-                                                        <h3 class="me-3">$ 58,664</h3>
-                                                        <h3 class="text-danger">+2.2%</h3>
-                                                    </div>
-
-                                                    <div>
-                                                        <p class="fw-bold small">Revenue<span class="text-muted">($1572M last month)</span></p>
-                                                    </div>
-    
-                                                    <button type="button" class="btn btn-outline-secondary btn-sm">
-                                                        <i class="fas fa-calendar-alt me-1"></i> Jan
-                                                    </button>
-                                                </div>
-
-                                                <div class="carousel-item">
-                                                    <div class="d-flex">
-                                                        <h3 class="me-3">$ 58,664</h3>
-                                                        <h3 class="text-danger">+1.2%</h3>
-                                                    </div>
-
-                                                    <div>
-                                                        <p class="fw-bold small">Revenue<span class="text-muted">($1572M last month)</span></p>
-                                                    </div>
-    
-                                                    <button type="button" class="btn btn-outline-secondary btn-sm">
-                                                        <i class="fas fa-calendar-alt me-1"></i> Jan
-                                                    </button>
-                                                </div>
-
-                                                <button type="button" class="carousel-control-prev" data-bs-target="#returns" data-bs-slide="prev">
-                                                    <span class="carousel-control-prev-icon"></span>
-                                                </button> 
-                                                
-                                                <button type="button" class="carousel-control-next" data-bs-target="#returns" data-bs-slide="next">
-                                                    <span class="carousel-control-next-icon"></span>
-                                                </button>  
-
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-3 col-sm-6 mb-2">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h6 class="card-title">Marketing</h6>
-
-                                        <div id="marketing" class="carousel slide" data-bs-ride="carousel">
-                                            <div class="carousel-inner p-3">
-
-                                                <div class="carousel-item active">
-                                                    <div class="d-flex">
-                                                        <h3 class="me-3">$ 68,664</h3>
-                                                        <h3 class="text-danger">+3.2%</h3>
-                                                    </div>
-
-                                                    <div>
-                                                        <p class="fw-bold small">Revenue<span class="text-muted">($1572M last month)</span></p>
-                                                    </div>
-    
-                                                    <button type="button" class="btn btn-outline-secondary btn-sm">
-                                                        <i class="fas fa-calendar-alt me-1"></i> Jan
-                                                    </button>
-                                                </div>
-
-                                                <div class="carousel-item">
-                                                    <div class="d-flex">
-                                                        <h3 class="me-3">$ 58,664</h3>
-                                                        <h3 class="text-danger">+2.2%</h3>
-                                                    </div>
-
-                                                    <div>
-                                                        <p class="fw-bold small">Revenue<span class="text-muted">($1572M last month)</span></p>
-                                                    </div>
-    
-                                                    <button type="button" class="btn btn-outline-secondary btn-sm">
-                                                        <i class="fas fa-calendar-alt me-1"></i> Jan
-                                                    </button>
-                                                </div>
-
-                                                <div class="carousel-item">
-                                                    <div class="d-flex">
-                                                        <h3 class="me-3">$ 58,664</h3>
-                                                        <h3 class="text-danger">+1.2%</h3>
-                                                    </div>
-
-                                                    <div>
-                                                        <p class="fw-bold small">Revenue<span class="text-muted">($1572M last month)</span></p>
-                                                    </div>
-    
-                                                    <button type="button" class="btn btn-outline-secondary btn-sm">
-                                                        <i class="fas fa-calendar-alt me-1"></i> Jan
-                                                    </button>
-                                                </div>
-
-                                                <button type="button" class="carousel-control-prev" data-bs-target="#marketing" data-bs-slide="prev">
-                                                    <span class="carousel-control-prev-icon"></span>
-                                                </button> 
-                                                
-                                                <button type="button" class="carousel-control-next" data-bs-target="#marketing" data-bs-slide="next">
-                                                    <span class="carousel-control-next-icon"></span>
-                                                </button>  
-
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-
+                        <div class="col-md-6 form-group">
+                            <button type="reset" class="btn btn-secondary btn-sm rounded-0">Cancel</button>
+                            <button type="submit" class="btn btn-primary btn-sm rounded-0 ms-3">Submit</button>
                         </div>
-                        <!-- End Carousel Area -->
-
-                        <!-- Start Gauge Area -->
-                        <div class="row">
-
-                            <div class="col-lg-3 col-md-6 mb-2">
-                                <div class="card shadow py-2 border-left-primarys">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col">
-                                                <h6 class="text-xs fw-bold text-primary text-uppercase mb-1">Users</h6>
-                                            </div>
-                                            <div class="col-auto">
-                                                <p class="h6 text-muted">Report</p>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-auto">
-                                            <div id="gaugeusers"></div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-3 col-md-6 mb-2">
-                                <div class="card shadow py-2 border-left-successes">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col">
-                                                <h6 class="text-xs fw-bold text-primary text-uppercase mb-1">Customers</h6>
-                                            </div>
-                                            <div class="col-auto">
-                                                <p class="h6 text-muted">Report</p>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-auto">
-                                            <div id="gaugecustomers"></div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-3 col-md-6 mb-2">
-                                <div class="card shadow py-2 border-left-infos">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col">
-                                                <h6 class="text-xs fw-bold text-primary text-uppercase mb-1">Employees</h6>
-                                            </div>
-                                            <div class="col-auto">
-                                                <p class="h6 text-muted">Report</p>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-auto">
-                                            <div id="gaugeemployees"></div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-3 col-md-6 mb-2">
-                                <div class="card shadow py-2 border-left-warnings">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col">
-                                                <h6 class="text-xs fw-bold text-primary text-uppercase mb-1">Investers</h6>
-                                            </div>
-                                            <div class="col-auto">
-                                                <p class="h6 text-muted">Report</p>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-auto">
-                                            <div id="gaugeinvesters"></div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <!-- End Gauge Area -->
-
-                        <!-- Start Expenses Area -->
-                        <div class="row">
-
-                            <div class="col-md-7 mb-3">
-                                <div class="card shadow">
-                                    <div class="card-header">
-                                        <h6 class="text-primary">Expenses</h6>
-                                    </div>
-                                    <div class="card-body">
-
-                                        <h6 class="small">Other Expenses 20%</h6>
-                                        <div class="progress mb-3">
-                                            <div class="progress-bar bg-danger" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-
-                                        <h6 class="small">Sales Tracking 40%</h6>
-                                        <div class="progress mb-3">
-                                            <div class="progress-bar bg-warning" style="width: 40%;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-
-                                        <h6 class="small">Rental Fee 60%</h6>
-                                        <div class="progress mb-3">
-                                            <div class="progress-bar bg-primary" style="width: 60%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-
-                                        <h6 class="small">Salary 80%</h6>
-                                        <div class="progress mb-3">
-                                            <div class="progress-bar bg-info" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-
-                                        <h6 class="small">Fixture 100%</h6>
-                                        <div class="progress mb-3">
-                                            <div class="progress-bar bg-success" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-5">
-                                <div class="card shadow">
-                                    <div class="card-header">
-                                        <h6 class="text-primary">Revenue Sources</h6>
-                                    </div>
-                                    <div class="card-body">
-                                        <div style="height: 250px;" class="d-flex justify-content-center align-items-center">
-                                            <canvas id="myChart"></canvas>
-                                        </div>
-                                        <div class="small text-center mt-2">
-                                            <span><i class="fas fa-circle text-warning"></i> Return Item</span>
-                                            <span class="mx-2"><i class="fas fa-circle text-primary"></i> Direct Sales</span>
-                                            <span><i class="fas fa-circle text-danger"></i> Online Sales</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <!-- End Expenses Area -->
-
-                        <!-- Start Earning Area -->
-                        <div class="row">
-
-                            <div class="col-md-8 mb-3">
-                                <div class="card">
-                                    <div class="card-header d-flex justify-content-between align-items-center">
-                                            <h6 class="card-title">Earnings Overview</h6>
-                                            <div class="dropdown">
-                                                <a href="javascript:void(0);" class="dropdown-toggle" data-bs-toggle="dropdown">
-                                                    <i class="fas fa-ellipsis-v"></i>
-                                                </a>
-
-                                                <div class="dropdown-menu shadow">
-                                                    <div class="dropdown-header">Quick Action</div>
-                                                    <a href="javascript:void(0);" class="dropdown-item">Action</a>
-                                                    <a href="javascript:void(0);" class="dropdown-item">Edit</a>
-                                                    <div class="dropdown-divider"></div>
-                                                    <a href="javascript:void(0);" class="dropdown-item">View Report</a>
-                                                </div>
-
-                                            </div>
-                                    </div>
-                                    <div class="card-body">
-                                        <div id="curve_chart" style="width: 100%"></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4 mb-3">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h6 class="card-title">Regional Team</h6>
-
-                                        <div class="d-flex align-items-center border-bottom py-2">
-                                            <img src="./assets/img/users/user1.jpg" class="rounded-circle" width="40" alt="user1" />
-                                            <div class="ms-3">
-                                                <h6 class="mb-1">Ms.July</h6>
-                                                <small class="text-muted"><i class="fas fa-map-marker-alt me-1"></i>  Mandalay City, Myanmar.</small>
-                                            </div>
-                                            <div class="badge bg-success p-1 ms-auto">
-                                                <i class="fas fa-plus"></i>
-                                            </div>
-                                        </div>
-
-                                        <div class="d-flex align-items-center border-bottom py-2">
-                                            <img src="./assets/img/users/user2.jpg" class="rounded-circle" width="40" alt="user2" />
-                                            <div class="ms-3">
-                                                <h6 class="mb-1">Ms.Anton</h6>
-                                                <small class="text-muted"><i class="fas fa-map-marker-alt me-1"></i>  Mandalay City, Myanmar.</small>
-                                            </div>
-                                            <div class="badge bg-success p-1 ms-auto">
-                                                <i class="fas fa-plus"></i>
-                                            </div>
-                                        </div>
-
-                                        <div class="d-flex align-items-center py-2">
-                                            <img src="./assets/img/users/user3.jpg" class="rounded-circle" width="40" alt="user3" />
-                                            <div class="ms-3">
-                                                <h6 class="mb-1">Ms.Yoon</h6>
-                                                <small class="text-muted"><i class="fas fa-map-marker-alt me-1"></i>  Mandalay City, Myanmar.</small>
-                                            </div>
-                                            <div class="badge bg-success p-1 ms-auto">
-                                                <i class="fas fa-plus"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <!-- End Earning Area -->
-
-                        <!-- Start Result Area -->
-                        <div class="row">
-                            <div class="col-12 mb-3">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="row">
-
-                                            <div class="col-md-3 col-sm-6">
-                                                <div class="d-flex justify-content-center align-items-center">
-                                                    <i class="fas fa-users fa-2x text-primary me-4"></i>
-                                                    <div class="text-center">
-                                                        <p class="mb-0">Users</p>
-                                                        <h5 class="fw-bold">56320</h5>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-3 col-sm-6">
-                                                <div class="d-flex justify-content-center align-items-center">
-                                                    <i class="fas fa-check-circle fa-2x text-primary me-4"></i>
-                                                    <div class="text-center">
-                                                        <p class="mb-0">Feedbacks</p>
-                                                        <h5 class="fw-bold">3200</h5>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-3 col-sm-6">
-                                                <div class="d-flex justify-content-center align-items-center">
-                                                    <i class="fas fa-trophy fa-2x text-primary me-4"></i>
-                                                    <div class="text-center">
-                                                        <p class="mb-0">Employees</p>
-                                                        <h5 class="fw-bold">1600</h5>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-3 col-sm-6">
-                                                <div class="d-flex justify-content-center align-items-center">
-                                                    <i class="fas fa-star fa-2x text-primary me-4"></i>
-                                                    <div class="text-center">
-                                                        <p class="mb-0">Sales</p>
-                                                        <h5 class="fw-bold">12860</h5>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Result Area -->
-
-                        <!-- Start Analysis Area -->
-                        <div class="row">
-
-                            <div class="col-md-4 mb-3">
-                                <div class="card shadow">
-                                    <div class="card-body">
-                                        <h6>Sale Analysis Trend</h6>
-
-                                        <div class="mt-2">
-
-                                            <div class="d-flex justify-content-between">
-                                                <small>Order Value</small>
-                                                <small>120.8%</small>
-                                            </div>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-secondary" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-
-                                        </div>
-
-                                        <div class="mt-2">
-
-                                            <div class="d-flex justify-content-between">
-                                                <small>Total Product</small>
-                                                <small>325.2%</small>
-                                            </div>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-success" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-
-                                        </div>
-
-                                        <div class="mt-2">
-
-                                            <div class="d-flex justify-content-between">
-                                                <small>Quantity</small>
-                                                <small>25.60%</small>
-                                            </div>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-warning" style="width: 70%;" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>  
-
-                            <div class="col-md-8 mb-3">
-                                <div class="card shadow">
-                                    <div class="card-body">
-                                        <h6>Project Status</h6>
-                                        
-                                        <div>
-                                            <table class="table">
-                                                <tr>
-                                                    <td>
-                                                        <div class="d-flex">
-                                                            <img src="./assets/img/clients/client1.png" class="me-3" width="100" alt="client1" />
-                                                            <div>
-                                                                <small>Company</small>
-                                                                <p class="fw-bold">Sony Electronic</p>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        Sales
-                                                        <p class="fw-bold mt-1">$3250</p>
-                                                    </td>
-                                                    <td>
-                                                        Status
-                                                        <p class="fw-bold text-success mt-1">88%</p>
-                                                    </td>
-                                                    <td>
-                                                        Deadline
-                                                        <p class="fw-bold mt-1">10 June 2023</p>
-                                                    </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-sm btn-secondary rounded-0"><i class="fas fa-pen"></i> edit</button>
-                                                    </td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td>
-                                                        <div class="d-flex">
-                                                            <img src="./assets/img/clients/client2.png" class="me-3" width="100" alt="client2" />
-                                                            <div>
-                                                                <small>Company</small>
-                                                                <p class="fw-bold">Mi Electronic</p>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        Sales
-                                                        <p class="fw-bold mt-1">$3250</p>
-                                                    </td>
-                                                    <td>
-                                                        Status
-                                                        <p class="fw-bold text-success mt-1">88%</p>
-                                                    </td>
-                                                    <td>
-                                                        Deadline
-                                                        <p class="fw-bold mt-1">10 June 2023</p>
-                                                    </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-sm btn-secondary rounded-0"><i class="fas fa-pen"></i> edit</button>
-                                                    </td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td>
-                                                        <div class="d-flex">
-                                                            <img src="./assets/img/clients/client3.png" class="me-3" width="100" alt="client3" />
-                                                            <div>
-                                                                <small>Company</small>
-                                                                <p class="fw-bold">Vivo Electronic</p>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        Sales
-                                                        <p class="fw-bold mt-1">$3250</p>
-                                                    </td>
-                                                    <td>
-                                                        Status
-                                                        <p class="fw-bold text-success mt-1">88%</p>
-                                                    </td>
-                                                    <td>
-                                                        Deadline
-                                                        <p class="fw-bold mt-1">10 June 2023</p>
-                                                    </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-sm btn-secondary rounded-0"><i class="fas fa-pen"></i> edit</button>
-                                                    </td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td>
-                                                        <div class="d-flex">
-                                                            <img src="./assets/img/clients/client4.png" class="me-3" width="100" alt="client4" />
-                                                            <div>
-                                                                <small>Company</small>
-                                                                <p class="fw-bold">Oppo Electronic</p>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        Sales
-                                                        <p class="fw-bold mt-1">$3250</p>
-                                                    </td>
-                                                    <td>
-                                                        Status
-                                                        <p class="fw-bold text-success mt-1">88%</p>
-                                                    </td>
-                                                    <td>
-                                                        Deadline
-                                                        <p class="fw-bold mt-1">10 June 2023</p>
-                                                    </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-sm btn-secondary rounded-0"><i class="fas fa-pen"></i> edit</button>
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <!-- End Analysis Area -->
-
-                        <!-- Start Todo Area -->
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="d-flex justify-content-between">
-                                            <h6 class="card-title">Todo List</h6>
-                                            <div class="dropdown">
-                                                <a href="javascript:void(0);" class="dropdown-toggle" data-bs-toggle="dropdown">
-                                                    <i class="fas fa-ellipsis-v"></i>
-                                                </a>
-
-                                                <div class="dropdown-menu shadow">
-                                                    <a href="javascript:void(0);" class="dropdown-item">Action</a>
-                                                    <a href="javascript:void(0);" class="dropdown-item">Another Action</a>
-                                                    <a href="javascript:void(0);" class="dropdown-item">Something else here</a>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <div class="input-group mt-3">
-                                            <input type="text" class="form-control shadow-none form-control-sm" placeholder="Add list here..." />
-                                            <button type="button" class="btn btn-primary btn-sm form-group-text">Add to list</button>
-                                        </div>
-
-                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                                    </div>
-
-                                    <ul class="list-unstyled p-3">
-                                        <li class="d-flex justify-content-between">
-                                            <label>
-                                                <input type="checkbox" class="checkbox" /><span class="ms-2">when an unknown printer took a galley of KimYooJung.</span>
-                                            </label>
-                                            <i class="fas fa-trash-alt text-muted"></i>
-                                        </li>
-
-                                        <li class="d-flex justify-content-between">
-                                            <label>
-                                                <input type="checkbox" class="checkbox" /><span class="ms-2">when an unknown printer took a galley of KimYooJung.</span>
-                                            </label>
-                                            <i class="fas fa-trash-alt text-muted"></i>
-                                        </li>
-
-                                        <li class="d-flex justify-content-between">
-                                            <label>
-                                                <input type="checkbox" class="checkbox" /><span class="ms-2">when an unknown printer took a galley of KimYooJung.</span>
-                                            </label>
-                                            <i class="fas fa-trash-alt text-muted"></i>
-                                        </li>
-
-                                        <li class="d-flex justify-content-between">
-                                            <label>
-                                                <input type="checkbox" class="checkbox" /><span class="ms-2">when an unknown printer took a galley of KimYooJung.</span>
-                                            </label>
-                                            <i class="fas fa-trash-alt text-muted"></i>
-                                        </li>
-
-                                        <li class="d-flex justify-content-between">
-                                            <label>
-                                                <input type="checkbox" class="checkbox" /><span class="ms-2">when an unknown printer took a galley of KimYooJung.</span>
-                                            </label>
-                                            <i class="fas fa-trash-alt text-muted"></i>
-                                        </li>
-
-                                        <li class="d-flex justify-content-between">
-                                            <label>
-                                                <input type="checkbox" class="checkbox" /><span class="ms-2">when an unknown printer took a galley of KimYooJung.</span>
-                                            </label>
-                                            <i class="fas fa-trash-alt text-muted"></i>
-                                        </li>
-
-                                        <li class="d-flex justify-content-between">
-                                            <label>
-                                                <input type="checkbox" class="checkbox" /><span class="ms-2">when an unknown printer took a galley of KimYooJung.</span>
-                                            </label>
-                                            <i class="fas fa-trash-alt text-muted"></i>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div class="col-md-8">
-                                <div class="card shadow">
-                                    <div class="card-header">
-                                        <h6 class="card-title text-primary m-0">Illustrations</h6>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="text-center mb-2">
-                                            <img src="./assets/img/etc/studentgroup.png" class="" width="150" alt="student" />
-                                        </div>
-                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s</p>
-                                        <a href="javascript:void(0);">Browse Illustrations on more</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Todo Area -->
 
                     </div>
+                </form>
+            </div>
+
+            <hr/>
+
+            <div class="col-md-12">
+                <div class="row">
+
+                    <div class="col-md-2 mb-2">
+                        <a href="javascript:void(0);" class="btn btn-danger btn-sm rounded-0">Bulk Delete</a>
+                    </div>
+
+                    <div class="col-md-10">
+                        <form action="" method="">
+
+
+                            <div class="row justify-content-end">
+
+                                <div class="col-md-2 col-sm-6 mb-2">
+                                    <div class="input-group">
+                                        <input type="text" name="filtername" id="filtername" class="form-control form-control-sm rounded-0" placeholder="Search..." />
+                                        <button type="submit" id="search-btn" class="btn btn-secondary btn-sm"><i class="fas fa-search"></i></button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+
                 </div>
             </div>
-        </section>
 
-<!-- End Content Area -->
+            <div class="col-md-12">
+                <table class="table table-sm table-hover border">
+                    <thead>
+                        <tr>
+                            <th>
+                                <input type="checkbox" name="selectalls" id="selectalls" class="form-check-input selectalls" />
+                            </th>
+                            <th>No</th>
+                            <th>Name</th>
+                            <th>By</th>
+                            <th>Created At</th>
+                            <th>Updated At</th>
+                            <th>
+                                <a href="javascript:void(0);" class="text-info"><i class="fas fa-pen"></i></a>
+                                <a href="javascript:void(0);" class="text-danger"><i class="fas fa-trash-alt ms-2"></i></a>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($statuses as $idx=>$status)
+                            <tr>
+                                <td>select</td>
+                                <td>{{++$idx}}</td>
+                                <td>{{$status->name}}</td>
+                                <td>{{$status->user_id}}</td>
+                                <td>{{$status->created_at}}</td>
+                                <td>{{$status->updated_at}}</td>
+                                <td>action</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
 
-
+        </div>
+    <!-- End Content Area -->
 @endsection
 
 
-@section('styles')
+@section('css')
 
 @endsection
 

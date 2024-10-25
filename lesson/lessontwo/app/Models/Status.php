@@ -16,7 +16,7 @@ class Status extends Model
     protected $fillable = [
         'name',
         'slug',
-        user_id
+        'user_id'
     ];
 
 

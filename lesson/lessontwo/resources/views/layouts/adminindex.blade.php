@@ -19,10 +19,29 @@
     <!-- Page wrapper -->
     <section>
 
-        <!-- start breadcrumb -->
-        <!-- end breadcrumb -->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-10 col-md-9 pt-md-5 mt-md-3 ms-auto">
+                    <!-- start inner content area -->
+                        <div class="row">
+                            <!-- start breadcrumb -->
+                            <nav>
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="javascript:void(0);"><i class="fas fa-home"></i></a></li>
+                                    <li class="breadcrumb-item"><a href="javascript:void(0);">Previous</a></li>
+                                    <li class="breadcrumb-item"><a href="javascript:void(0);">Current</a></li>
+                                </ol>
+                            </nav>
+                            <!-- end breadcrumb -->
 
-        @yield('content')
+                            @yield('content')
+                        </div>
+
+                    <!-- end inner content area -->
+
+                </div>
+            </div>
+        </div>
 
 
     </section>

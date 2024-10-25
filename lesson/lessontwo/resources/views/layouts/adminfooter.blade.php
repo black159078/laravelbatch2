@@ -49,26 +49,10 @@
 
 
         <!-- Start Modal Area -->
-        <div id="quicksearchmodal" class="modal fade">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h6 class="modal-title">Result</h6>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                    </div>
-                    <div class="modal-body">
-                        <ul class="list-group">
-                            <li class="list-group-item"><a href="javascript:void(0);">WDF1001</a></li>
-                            <li class="list-group-item"><a href="javascript:void(0);">WDF1002</a></li>
-                            <li class="list-group-item"><a href="javascript:void(0);">WDF1003</a></li>
-                        </ul>
-                    </div>
-                    <div class="modal-footer">
 
-                    </div>
-                </div>
-            </div>
-        </div>
+            <!-- Start  -->
+            <!-- End -->
+
         <!-- End Modal Area -->
         
 
