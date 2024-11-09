@@ -237,3 +237,10 @@ body.show-nav > .right-panels{
 
 /* Custom table style */
 
+#mytable{
+    background-color: transparent;
+}
+
+#mytable tr,#mytable td,#mytable th{
+    background-color: transparent;
+}

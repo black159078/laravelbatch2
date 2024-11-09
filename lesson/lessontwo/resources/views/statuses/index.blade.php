@@ -56,7 +56,7 @@
             </div>
 
             <div class="col-md-12">
-                <table class="table table-sm table-hover border">
+                <table id="mytable" class="table table-sm table-hover border">
                     <thead>
                         <tr>
                             <th>
@@ -67,22 +67,28 @@
                             <th>By</th>
                             <th>Created At</th>
                             <th>Updated At</th>
-                            <th>
-                                <a href="javascript:void(0);" class="text-info"><i class="fas fa-pen"></i></a>
-                                <a href="javascript:void(0);" class="text-danger"><i class="fas fa-trash-alt ms-2"></i></a>
-                            </th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($statuses as $idx=>$status)
                             <tr>
-                                <td>select</td>
+                                <td>
+                                    <input type="checkbox" name="singlechecks" id="singlechecks" class="form-check-input singlechecks" />
+                                </td>
                                 <td>{{++$idx}}</td>
                                 <td>{{$status->name}}</td>
-                                <td>{{$status->user_id}}</td>
-                                <td>{{$status->created_at}}</td>
-                                <td>{{$status->updated_at}}</td>
-                                <td>action</td>
+                                <td>{{$status->user['name']}}</td>
+                                <td>{{$status->created_at->format('d M Y')}}</td>
+                                <td>{{$status->updated_at->format('d M Y')}}</td>
+                                <td>
+                                    <a href="javascript:void(0);" class="text-info"><i class="fas fa-pen"></i></a>
+                                    <a href="javascript:void(0);" class="text-danger ms-2 delete-btn" data-idx="{{$idx}}"><i class="fas fa-trash-alt"></i></a>
+                                    <form id="formdelete-{{$idx}}" action="{{route('statuses.destroy',$status->id)}}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                    </form>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -100,7 +106,30 @@
 
 
 @section('scripts')
+    <script type="text/javascript">
 
+        $(document).ready(function(){
+            $('.delete-btn').click(function(){
+                getidx = $(this).data('idx');
+                // console.log(getidx);
+
+                if(confirm(`Are you sure! you want to delete ${getidx}`)){
+                    $('#formdelete-'+getidx).submit();
+                    return true;
+                }else{
+                    return false;
+                }
+
+            });
+
+            $('#selectalls').click(function(){
+                $('.singlechecks').prop('checked',$(this).prop('checked'));
+            });
+        });
+
+
+
+    </script>
 @endsection
 
 
