@@ -21,12 +21,18 @@ class DaysController extends Controller
 
     public function create()
     {
-        //
+        $statuses = Status::whereIn('id',[3,4])->get();
+        return view('days.create',compact('statuses'));
     }
 
 
     public function store(Request $request)
     {
+
+        $this->validate($request,[
+            'name'=>'required|unique:day,name',
+            'status_id'=>'required|in:3,4'
+        ]);
 
         $user = Auth::user();
         $user_id = $user->id;
@@ -45,18 +51,26 @@ class DaysController extends Controller
 
     public function show(string $id)
     {
-        //
+        $day = Day::findOrFail($id);
+        return view('days.show',compact('day'));
     }
 
 
     public function edit(string $id)
     {
-        //
+        $day = Day::findOrFail($id);
+        $statuses = Status::whereIn('id',[3,4])->get();
+        return view('days.edit',compact('day','statuses'));
     }
 
 
     public function update(Request $request, string $id)
     {
+
+        $this->validate($request,[
+            'name'=>'required|unique:day,name',
+            'status_id'=>'required|in:3,4'
+        ]);
 
         $user = Auth::user();
         $user_id = $user->id;

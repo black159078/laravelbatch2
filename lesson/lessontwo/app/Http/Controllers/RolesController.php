@@ -28,7 +28,8 @@ class RolesController extends Controller
      */
     public function create()
     {
-        //
+        $statuses = Status::whereIn('id',[3,4])->get();
+        return view('roles.create',compact('statuses'));
     }
 
     /**
@@ -37,12 +38,19 @@ class RolesController extends Controller
     public function store(Request $request)
     {
 
+        $this->validate($request,[
+            'image'=>'image|mimes:jpg,jpeg,png|max:1024',
+            'name'=>'required|max:50|unique:roles,name',
+            'status_id'=>'required|in:3,4'
+        ]);
+
         $user = Auth::user();
         $user_id = $user->id;
 
         $role = new Role();
         $role->name = $request['name'];
         $role->slug = Str::slug($request['name']);
+        $role->status_id = $request['status_id'];
         $role->user_id = $user_id;
 
         // Single Image Upload
@@ -54,9 +62,9 @@ class RolesController extends Controller
             //dd($fname);
             $imagenewname = uniqid($user_id).$user_id.$fname;
             //dd($imagenewname);
-            $file->move(public_path("assets/img/roles/",$imagenewname));
+            $file->move(public_path("assets/img/roles/"),$imagenewname);
 
-            $filepath = 'assets/img/roles'.$imagenewname;
+            $filepath = 'assets/img/roles/'.$imagenewname;
             $role->image = $filepath;
         }
 
@@ -70,7 +78,8 @@ class RolesController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $role = Role::findOrFail($id);
+        return view('roles.show',compact('role'));
     }
 
     /**
@@ -95,6 +104,7 @@ class RolesController extends Controller
         $role = Role::findOrFail($id);
         $role->name = $request['name'];
         $role->slug = Str::slug($request['name']);
+        $role->status_id = $request['status_id'];
         $role->user_id = $user_id;
 
         if($request->hasFile('image')){
@@ -113,10 +123,10 @@ class RolesController extends Controller
             $fname = $file->getClientOriginalName();
             //dd($fname);
             $imagenewname = uniqid($user_id).$user_id.$fname;
-            //dd($imagenewname);
-            $file->move(public_path("assets/img/roles/",$imagenewname));
+            // dd($imagenewname);
+            $file->move(public_path("assets/img/roles/"),$imagenewname);
 
-            $filepath = 'assets/img/roles'.$imagenewname;
+            $filepath = 'assets/img/roles/'.$imagenewname;
             $role->image = $filepath;
         }
 

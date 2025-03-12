@@ -1,15 +1,21 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\LeavesController;
+use App\Http\Controllers\PostsController;
+use App\Http\Controllers\ProfileController;
+
 
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\DaysController;
 use App\Http\Controllers\GendersController;
 use App\Http\Controllers\PaymentTypesController;
+use App\Http\Controllers\RolesController;
 use App\Http\Controllers\ReligionsController;
 use App\Http\Controllers\StagesController;
 use App\Http\Controllers\StatusesController;
+use App\Http\Controllers\TagsController;
 use App\Http\Controllers\TypesController;
 use App\Http\Controllers\WarehousesController;
 
@@ -33,6 +39,11 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+
+    Route::resource('/leaves',LeavesController::class);
+    Route::resource('/posts',PostsController::class);
+    
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
@@ -42,9 +53,11 @@ Route::middleware('auth')->group(function () {
     Route::resource('/genders',GendersController::class);
     Route::resource('/stages',StagesController::class);
     Route::resource('/paymenttypes',PaymentTypesController::class);
+    Route::resource('/roles',RolesController::class);
     Route::resource('/religions',ReligionsController::class);
     Route::resource('/statuses',StatusesController::class);
     Route::resource('/stages',StagesController::class);
+    Route::resource('/tags',TagsController::class);
     Route::resource('/types',TypesController::class);
     Route::resource('/warehouses',WarehousesController::class);
     

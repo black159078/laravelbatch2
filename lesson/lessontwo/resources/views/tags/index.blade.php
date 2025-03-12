@@ -4,7 +4,7 @@
     <!-- Start Content Area -->
         <div class="container-fluid">
             <div class="col-md-12">
-                <form action="{{route('paymenttypes.store')}}" method="POST">
+                <form action="{{route('tags.store')}}" method="POST">
 
                     {{ csrf_field() }}
                     <!-- @csrf -->
@@ -17,7 +17,7 @@
                             @error('name')
                                 <span class="text-danger">{{$message}}</span>
                             @enderror
-                            <input type="text" name="name" class="form-control form-control-sm rounded-0" placeholder="Enter Paymenttype Name" />
+                            <input type="text" name="name" class="form-control form-control-sm rounded-0" placeholder="Enter Tags Name" />
                         </div>
 
                         <div class="col-md-4 form-group">
@@ -87,21 +87,21 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($paymenttypes as $idx=>$paymenttype)
+                        @foreach($tags as $idx=>$tag)
                             <tr>
                                 <td>
                                     <input type="checkbox" name="singlechecks" id="singlechecks" class="form-check-input singlechecks" />
                                 </td>
                                 <td>{{++$idx}}</td>
-                                <td>{{$paymenttype->name}}</td>
-                                <td>{{$paymenttype->status['name']}}</td>
-                                <td>{{$paymenttype->user['name']}}</td>
-                                <td>{{$paymenttype->created_at->format('d M Y')}}</td>
-                                <td>{{$paymenttype->updated_at->format('d M Y')}}</td>
+                                <td>{{$tag->name}}</td>
+                                <td>{{$tag->status['name']}}</td>
+                                <td>{{$tag->user['name']}}</td>
+                                <td>{{$tag->created_at->format('d M Y')}}</td>
+                                <td>{{$tag->updated_at->format('d M Y')}}</td>
                                 <td>
                                     <a href="javascript:void(0);" class="text-info"><i class="fas fa-pen"></i></a>
                                     <a href="javascript:void(0);" class="text-danger ms-2 delete-btn" data-idx="{{$idx}}"><i class="fas fa-trash-alt"></i></a>
-                                    <form id="formdelete-{{$idx}}" action="{{route('paymenttypes.destroy',$paymenttype->id)}}" method="POST">
+                                    <form id="formdelete-{{$idx}}" action="{{route('tags.destroy',$tag->id)}}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                     </form>

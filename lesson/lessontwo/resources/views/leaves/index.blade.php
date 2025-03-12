@@ -4,41 +4,7 @@
     <!-- Start Content Area -->
         <div class="container-fluid">
             <div class="col-md-12">
-                <form action="{{route('paymenttypes.store')}}" method="POST">
-
-                    {{ csrf_field() }}
-                    <!-- @csrf -->
-
-
-                    <div class="row align-items-end">
-
-                        <div class="col-md-4 form-group">
-                            <label for="name">Name <span class="text-danger">*</span></label>
-                            @error('name')
-                                <span class="text-danger">{{$message}}</span>
-                            @enderror
-                            <input type="text" name="name" class="form-control form-control-sm rounded-0" placeholder="Enter Paymenttype Name" />
-                        </div>
-
-                        <div class="col-md-4 form-group">
-                            <label for="status_id">Status</label>
-                            @error('status_id')
-                                <span class="text-danger">{{$message}}</span>
-                            @enderror
-                            <select name="status_id" id="status_id" class="form-control form-control-sm rounded-0">
-                                @foreach($statuses as $status)
-                                    <option value="{{$status['id']}}">{{$status['name']}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-
-                        <div class="col-md-4 form-group">
-                            <button type="reset" class="btn btn-secondary btn-sm rounded-0">Cancel</button>
-                            <button type="submit" class="btn btn-primary btn-sm rounded-0 ms-3">Submit</button>
-                        </div>
-
-                    </div>
-                </form>
+                <a href="{{route('leaves.create')}}" class="btn btn-primary btn-sm rounded-0">Create</a>
             </div>
 
             <hr/>
@@ -87,21 +53,21 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($paymenttypes as $idx=>$paymenttype)
+                        @foreach($leaves as $idx=>$leave)
                             <tr>
                                 <td>
                                     <input type="checkbox" name="singlechecks" id="singlechecks" class="form-check-input singlechecks" />
                                 </td>
                                 <td>{{++$idx}}</td>
-                                <td>{{$paymenttype->name}}</td>
-                                <td>{{$paymenttype->status['name']}}</td>
-                                <td>{{$paymenttype->user['name']}}</td>
-                                <td>{{$paymenttype->created_at->format('d M Y')}}</td>
-                                <td>{{$paymenttype->updated_at->format('d M Y')}}</td>
+                                <td><a href="{{route('leaves.show',$leave->id)}}">{{$leave->name}}</a></td>
+                                <td>{{$leave->stage->name}}</td>
+                                <td>{{$leave->user['name']}}</td>
+                                <td>{{$leave->created_at->format('d M Y')}}</td>
+                                <td>{{$leave->updated_at->format('d M Y')}}</td>
                                 <td>
-                                    <a href="javascript:void(0);" class="text-info"><i class="fas fa-pen"></i></a>
+                                    <a href="{{route('leaves.edit',$leave->id)}}" class="text-info"><i class="fas fa-pen"></i></a>
                                     <a href="javascript:void(0);" class="text-danger ms-2 delete-btn" data-idx="{{$idx}}"><i class="fas fa-trash-alt"></i></a>
-                                    <form id="formdelete-{{$idx}}" action="{{route('paymenttypes.destroy',$paymenttype->id)}}" method="POST">
+                                    <form id="formdelete-{{$idx}}" action="{{route('leaves.destroy',$leave->id)}}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                     </form>
@@ -143,6 +109,8 @@
                 $('.singlechecks').prop('checked',$(this).prop('checked'));
             });
         });
+
+        
 
 
 

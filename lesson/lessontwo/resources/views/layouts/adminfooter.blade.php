@@ -59,9 +59,9 @@
 
         
         <!-- bootstrap css1 js1 -->
-        <script src="./assets/libs/bootstrap-5.3.2-dist/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+        <script src="{{asset('assets/libs/bootstrap-5.3.2-dist/js/bootstrap.bundle.min.js')}}" type="text/javascript"></script>
         <!-- jquery js1 -->
-        <script src="./assets/libs/jquery/jquery-3.7.1.min.js" type="text/javascript"></script>
+        <script src="{{asset('assets/libs/jquery/jquery-3.7.1.min.js')}}" type="text/javascript"></script>
         <!-- jquery ui css1 js1 -->
         <script src="{{asset('assets/libs/jquery-ui-1.13.2/jquery-ui.min.js')}}" type="text/javascript"></script>
         <!-- google chart js1 -->
@@ -72,7 +72,7 @@
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.4/raphael-min.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/justgage/1.2.9/justgage.min.js"></script>
         <!-- lightbox css1 js1 -->
-        <script src="./assets/libs/lightbox2-2.11.4/dist/js/lightbox.min.js" type="text/javascript"></script>
+        <script src="{{asset('assets/libs/lightbox2-2.11.4/dist/js/lightbox.min.js')}}" type="text/javascript"></script>
         <!-- custom js -->
         <script src="{{asset('assets/dist/js/app.js')}}" type="text/javascript"></script>
         <!-- extra js -->

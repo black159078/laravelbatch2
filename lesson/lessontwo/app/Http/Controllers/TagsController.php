@@ -2,23 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Stage;
+use App\Models\Tag;
 use App\Models\Status;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
-class StagesController extends Controller
+class TagsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        $stages = Stage::all();
+        $tags = Tag::all();
         $statuses = Status::whereIn('id',[3,4])->get();
-        return view('stages.index',compact('stages','statuses'));
+        return view('tags.index',compact('tags','statuses'));
     }
 
     /**
@@ -27,7 +24,7 @@ class StagesController extends Controller
     public function create()
     {
         $statuses = Status::whereIn('id',[3,4])->get();
-        return view('stages.create',compact('statuses'));
+        return view('tags.create',compact('statuses'));
     }
 
     /**
@@ -35,24 +32,23 @@ class StagesController extends Controller
      */
     public function store(Request $request)
     {
-
         $this->validate($request,[
-            'name'=>'required|unique:stage,name',
+            'name'=>'required|unique:tag,name',
             'status_id'=>'required|in:3,4'
         ]);
 
         $user = Auth::user();
         $user_id = $user->id;
 
-        $stage = new Stage();
-        $stage->name = $request['name'];
-        $stage->slug = Str::slug($request['name']);
-        $stage->status_id = $request['status_id'];
-        $stage->user_id = $user_id;
+        $tag = new Tag();
+        $tag->name = $request['name'];
+        $tag->slug = Str::slug($request['name']);
+        $tag->status_id = $request['status_id'];
+        $tag->user_id = $user_id;
 
-        $stage->save();
+        $tag->save();
 
-        return redirect(route('stages.index'));
+        return redirect(route('tags.index'));
     }
 
     /**
@@ -60,8 +56,8 @@ class StagesController extends Controller
      */
     public function show(string $id)
     {
-        $stage = Stage::findOrFail($id);
-        return view('stages.show',compact('stage'));
+        $tag = Tag::findOrFail($id);
+        return view('tags.show',compact('tag'));
     }
 
     /**
@@ -69,9 +65,9 @@ class StagesController extends Controller
      */
     public function edit(string $id)
     {
-        $stage = Stage::findOrFail($id);
+        $tag = Tag::findOrFail($id);
         $statuses = Status::whereIn('id',[3,4])->get();
-        return view('stages.edit',compact('stage','statuses'));
+        return view('tags.edit',compact('tag','statuses'));
     }
 
     /**
@@ -81,22 +77,22 @@ class StagesController extends Controller
     {
 
         $this->validate($request,[
-            'name'=>'required|unique:stage,name',
+            'name'=>'required|unique:tag,name',
             'status_id'=>'required|in:3,4'
         ]);
 
         $user = Auth::user();
         $user_id = $user->id;
 
-        $stage = Stage::findOrFail($id);
-        $stage->name = $request['name'];
-        $stage->slug = Str::slug($request['name']);
-        $stage->status_id = $request['status_id'];
-        $stage->user_id = $user_id;
+        $tag = Tag::findOrFail($id);
+        $tag->name = $request['name'];
+        $tag->slug = Str::slug($request['name']);
+        $tag->status_id = $request['status_id'];
+        $tag->user_id = $user_id;
 
-        $stage->save();
+        $tag->save();
 
-        return redirect(route('stages.index'));
+        return redirect(route('tags.index'));
     }
 
     /**
@@ -104,8 +100,8 @@ class StagesController extends Controller
      */
     public function destroy(string $id)
     {
-        $stage = Stage::findOrFail($id);
-        $stage->delete();
+        $tag = Tag::findOrFail($id);
+        $tag->delete();
 
         return redirect()->back();
 

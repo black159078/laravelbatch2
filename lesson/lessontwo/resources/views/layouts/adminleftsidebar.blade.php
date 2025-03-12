@@ -74,15 +74,14 @@
                                     <li class="nav-item"><a href="javascript:void(0);" class="nav-link p-3 mb-2 text-white sidebarlinks" data-bs-toggle="collapse" data-bs-target="#analysis"><i class="fas fa-file me-3"></i> Fixed Analysis<i class="fas fa-angle-left mores"></i></a>
 
                                         <ul id="analysis" class="collapse">
-                                            <li><a href="javascript:void(0);" class="nav-link text-white sidebarlinks"><i class="fas fa-long-arrow-alt-right me-4">Country</i></a></li>
-                                            <li><a href="javascript:void(0);" class="nav-link text-white sidebarlinks"><i class="fas fa-long-arrow-alt-right me-4">Days</i></a></li>
-                                            <li><a href="javascript:void(0);" class="nav-link text-white sidebarlinks"><i class="fas fa-long-arrow-alt-right me-4">Categories</i></a></li>
-                                            <li><a href="javascript:void(0);" class="nav-link text-white sidebarlinks"><i class="fas fa-long-arrow-alt-right me-4">Gender</i></a></li>
-                                            <li><a href="javascript:void(0);" class="nav-link text-white sidebarlinks"><i class="fas fa-long-arrow-alt-right me-4">Payment Types</i></a></li>
-                                            <li><a href="javascript:void(0);" class="nav-link text-white sidebarlinks"><i class="fas fa-long-arrow-alt-right me-4">Stages</i></a></li>
-                                            <li><a href="javascript:void(0);" class="nav-link text-white sidebarlinks"><i class="fas fa-long-arrow-alt-right me-4">Status</i></a></li>
-                                            <li><a href="javascript:void(0);" class="nav-link text-white sidebarlinks"><i class="fas fa-long-arrow-alt-right me-4">Tags</i></a></li>
-                                            <li><a href="javascript:void(0);" class="nav-link text-white sidebarlinks"><i class="fas fa-long-arrow-alt-right me-4">Types</i></a></li>
+                                            <li><a href="{{route('days.index')}}" class="nav-link text-white sidebarlinks"><i class="fas fa-long-arrow-alt-right me-4">Days</i></a></li>
+                                            <li><a href="{{route('categories.index')}}" class="nav-link text-white sidebarlinks"><i class="fas fa-long-arrow-alt-right me-4">Categories</i></a></li>
+                                            <li><a href="{{route('genders.index')}}" class="nav-link text-white sidebarlinks"><i class="fas fa-long-arrow-alt-right me-4">Genders</i></a></li>
+                                            <li><a href="{{route('paymenttypes.index')}}" class="nav-link text-white sidebarlinks"><i class="fas fa-long-arrow-alt-right me-4">Payment Types</i></a></li>
+                                            <li><a href="{{route('stages.index')}}" class="nav-link text-white sidebarlinks"><i class="fas fa-long-arrow-alt-right me-4">Stages</i></a></li>
+                                            <li><a href="{{route('statuses.index')}}" class="nav-link text-white sidebarlinks"><i class="fas fa-long-arrow-alt-right me-4">Statuses</i></a></li>
+                                            <li><a href="{{route('tags.index')}}" class="nav-link text-white sidebarlinks"><i class="fas fa-long-arrow-alt-right me-4">Tags</i></a></li>
+                                            <li><a href="{{route('types.index')}}" class="nav-link text-white sidebarlinks"><i class="fas fa-long-arrow-alt-right me-4">Types</i></a></li>
                                         </ul>
 
                                     </li>
@@ -90,12 +89,9 @@
                                     <li class="nav-item"><a href="javascript:void(0);" class="nav-link p-3 mb-2 text-white sidebarlinks" data-bs-toggle="collapse" data-bs-target="#addon"><i class="fas fa-file me-3"></i> Addon<i class="fas fa-angle-left mores"></i></a>
 
                                         <ul id="addon" class="collapse">
-                                            <li><a href="javascript:void(0);" class="nav-link text-white sidebarlinks"><i class="fas fa-long-arrow-alt-right me-4">City</i></a></li>
-                                            <li><a href="javascript:void(0);" class="nav-link text-white sidebarlinks"><i class="fas fa-long-arrow-alt-right me-4">Payment Method</i></a></li>
-                                            <li><a href="javascript:void(0);" class="nav-link text-white sidebarlinks"><i class="fas fa-long-arrow-alt-right me-4">Relative</i></a></li>
-                                            <li><a href="javascript:void(0);" class="nav-link text-white sidebarlinks"><i class="fas fa-long-arrow-alt-right me-4">Roles</i></a></li>
-                                            <li><a href="javascript:void(0);" class="nav-link text-white sidebarlinks"><i class="fas fa-long-arrow-alt-right me-4">Social App</i></a></li>
-                                            <li><a href="javascript:void(0);" class="nav-link text-white sidebarlinks"><i class="fas fa-long-arrow-alt-right me-4">Warehouses</i></a></li>
+                                            <li><a href="{{route('religions.index')}}" class="nav-link text-white sidebarlinks"><i class="fas fa-long-arrow-alt-right me-4">Religions</i></a></li>
+                                            <li><a href="{{route('roles.index')}}" class="nav-link text-white sidebarlinks"><i class="fas fa-long-arrow-alt-right me-4">Roles</i></a></li>
+                                            <li><a href="{{route('warehouses.index')}}" class="nav-link text-white sidebarlinks"><i class="fas fa-long-arrow-alt-right me-4">Warehouses</i></a></li>
                                         </ul>
 
                                     </li>

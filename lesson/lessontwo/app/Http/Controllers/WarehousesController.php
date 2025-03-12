@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Warehouse;
 use App\Models\Status;
-use App\Models\Type;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -26,7 +26,8 @@ class WarehousesController extends Controller
      */
     public function create()
     {
-        //
+        $statuses = Status::whereIn('id',[3,4])->get();
+        return view('warehouses.create',compact('statuses'));
     }
 
     /**
@@ -34,6 +35,10 @@ class WarehousesController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'name'=>'required|unique:warehouse,name',
+            'status_id'=>'required|in:3,4'
+        ]);
 
         $user = Auth::user();
         $user_id = $user->id;
@@ -54,7 +59,8 @@ class WarehousesController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $warehouse = Warehouse::findOrFail($id);
+        return view('warehouses.show',compact('warehouse'));
     }
 
     /**
@@ -62,7 +68,9 @@ class WarehousesController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $warehouse = Warehouse::findOrFail($id);
+        $statuses = Status::whereIn('id',[3,4])->get();
+        return view('warehouses.edit',compact('warehouse','statuses'));
     }
 
     /**
@@ -70,6 +78,11 @@ class WarehousesController extends Controller
      */
     public function update(Request $request, string $id)
     {
+
+        $this->validate($request,[
+            'name'=>'required|unique:warehouse,name',
+            'status_id'=>'required|in:3,4'
+        ]);
 
         $user = Auth::user();
         $user_id = $user->id;
